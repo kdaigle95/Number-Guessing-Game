@@ -32,17 +32,20 @@ string reply; //store user's answer for if they want to continue
 
 
 
-int main() {
+int main() 
+{
 
 
-	do {
+	do 
+	{
 
 		unsigned int rng = GetRandomNumber(); //generates number. 
 			//cout << rng << endl; //Testing line
 
 			bLoop = false;
 
-		do {
+		do 
+		{
 			
 		
 			
@@ -52,27 +55,33 @@ int main() {
 				CheckGuess(guess);
 				
 		
-				if (tries == 20) { //checks for loss condition after each try. 
+				if (tries == 20) 
+				{ //checks for loss condition after each try. 
 					SayYouLost();
 					tries = 0;
 					bLoop = true;
 				}
 			
 			
-			if (bLoop == true) {
+			if (bLoop == true) 
+			{
 				tries = 0;
 			}
 		 
 
-		}while (bLoop == false); //continues or ends game
+		} while (bLoop == false); //continues or ends game
 
 	} while (bStop == false);
 
 }
 
 
-int SayYouWon() {
-	switch (rngWin) {
+int SayYouWon() 
+{
+	
+	switch (rngWin) 
+	{
+			
 	case 1:
 		cout << "Congratulations, you won! It took you " << tries << " attempts! Play again?" << endl; //tries keeps resetting to 0 when called
 		ContinueOption();
@@ -87,8 +96,12 @@ int SayYouWon() {
 	return 0;
 }
 
-int SayYouLost() {
-	switch(rngLose){
+int SayYouLost() 
+{
+	
+	switch(rngLose)
+	{
+			
 	case 1:
 		cout << "I'm sorry, you are out of tries. Better luck next time! Do you want to try again?" << endl;
 		ContinueOption();
@@ -105,28 +118,35 @@ int SayYouLost() {
 	return 0;
 }
 
-int CheckGuess(int guess) {
+int CheckGuess(int guess) 
+{
 	
 	
-	if (guess <= 100 && guess >= 1) {
+	if (guess <= 100 && guess >= 1) 
+	{
 		if (guess == rng) {
 			SayYouWon();
 			bLoop = true;
 		}
-		else if (guess == rng + 1 || guess == rng - 1) {
+		else if (guess == rng + 1 || guess == rng - 1) 
+		{
 			cout << "Hot! Hot! Hot!" << endl;
 		}
-		else  if (guess <= rng + 5 && guess >= rng - 5) {
+		else  if (guess <= rng + 5 && guess >= rng - 5) 
+		{
 			cout << "You are getting warmer..." << endl;
 		}
-		else if (guess <= rng + 10 && guess >= rng - 10) {
+		else if (guess <= rng + 10 && guess >= rng - 10) 
+		{
 			cout << "your guess is still cool" << endl;
 		}
-		else if (guess > rng + 10 || guess < rng - 10) {
+		else if (guess > rng + 10 || guess < rng - 10) 
+		{
 			cout << "Your guess is cold" << endl;
 		}
 	}
-	else {
+	else 
+	{
 		cout << "Your guess is invalid. Please enter a guess between 1 and 100." << endl;
 	}
 
@@ -134,7 +154,8 @@ int CheckGuess(int guess) {
 	return 0;
 }
 
-int GetRandomNumber() {
+int GetRandomNumber() 
+{
  srand((unsigned int)(time(NULL)));
 	rng = rand() % 100 + 1;
 	rngWin = rand() % 2 + 1;
@@ -143,19 +164,24 @@ int GetRandomNumber() {
 	
 }
 
-int ContinueOption() {
+int ContinueOption() 
+{
 	cout << "Please type yes or no" << endl;
 	cin >> reply;
-	for (int idx = 0; idx < reply.length(); idx++) {//Change reply to uppercase.
+	for (int idx = 0; idx < reply.length(); idx++) //Change reply to uppercase
+	{
 		reply[idx] = toupper(reply[idx]);
 	}
-		if (reply == "NO") { //stops game. 
+		if (reply == "NO") //stops game. 
+		{ 
 			bStop = true;
 		}
-		else if (reply == "YES") { //continues game
+		else if (reply == "YES") //continues game
+		{ 
 			bStop = false;
 		}
-		else {
+		else 
+		{
 			ContinueOption(); //Recursive until a correct answer is given
 		}
 	
